@@ -1,0 +1,52 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/fragment :: assets" />
+
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	<h1 class="page-header">Tambah Mahasiswa</h1>
+
+	<form action="/student/add/submit" method="post">
+		<div>
+			<label for="nama">Nama Lengkap</label> <input type="text" name=nama />
+		</div>
+		<div>
+			<label for="tempatLahir">Tempat Lahir</label> <input type="text" name="tempatLahir" />
+		</div>
+		<div>
+			<label for="tempatLahir">Tanggal Lahir</label> <input type="text" name="tanggalLahir" />
+		</div>
+		<div>
+			<label for="tempatLahir">Jenis Kelamin</label> <input type="text" name="jenisKelamin" />
+		</div>
+		<div>
+			<label for="tempatLahir">Agama</label> <input type="text" name="agama" />
+		</div>
+		<div>
+			<label for="tempatLahir">Golongan Darah</label> <input type="text" name="golDarah" />
+		</div>
+		<div>
+			<label for="tempatLahir">Tahun Masuk</label> <input type="text" name="tahunMasuk" />
+		</div>
+		<div>
+			<label for="tempatLahir">Jalur Masuk</label> <input type="text" name="jalurMasuk" />
+		</div>
+		<div>
+			<label for="tempatLahir">Universitas</label> <input type="text" name="idUniv" />
+		</div>
+		<div>
+			<label for="tempatLahir">Fakultas</label> <input type="text" name="idFakultas" />
+		</div>
+		<div>
+			<label for="tempatLahir">Program Studi</label> <input type="text" name="idProdi" />
+		</div>
+		<div>
+			<button type="submit" name="action" value="save">Save</button>
+		</div>
+	</form>
+	<div th:replace="fragments/fragment :: footer"></div>
+</body>
+
+</html>
+
