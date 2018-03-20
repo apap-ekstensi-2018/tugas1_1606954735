@@ -20,7 +20,10 @@ public class MhsModel {
 	private String status;
 	private String tahunMasuk;
 	private String jalurMasuk;
+	private int idProdi;
 	private String namaProdi;
+	private int idFakultas;
 	private String namaFakultas;
+	private int idUniv;
 	private String namaUniv;
 }

@@ -2,6 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/fragment :: assets" />
+<script type="text/javascript">
+	$('.yearDatePicker').datepicker({
+	        format: 'dd/mm/yyyy'
+	        });
+</script>
 
 <body>
 	<div th:replace="fragments/fragment :: header"></div>
@@ -9,37 +14,41 @@
 
 	<form action="/student/add/submit" method="post">
 		<div>
-			<label for="nama">Nama Lengkap</label> <input type="text" name=nama />
+			<label for="nama">Nama Lengkap</label> <input type="text" name="nama" id="nama" />
 		</div>
 		<div>
-			<label for="tempatLahir">Tempat Lahir</label> <input type="text" name="tempatLahir" />
+			<label for="tempatLahir">Tempat Lahir</label> <input type="text" name="tempatLahir" id="tempatLahir" />
 		</div>
 		<div>
-			<label for="tempatLahir">Tanggal Lahir</label> <input type="text" name="tanggalLahir" />
+			<label for="tanggalLahir">Tanggal Lahir</label> <input type="text" name="tanggalLahir" id="tanggalLahir" />
 		</div>
 		<div>
-			<label for="tempatLahir">Jenis Kelamin</label> <input type="text" name="jenisKelamin" />
+			<label for="jenisKelamin">Jenis Kelamin</label>
+			<select id="jenisKelamin" name="jenisKelamin">
+				<option val="0">Laki-laki</option>
+				<option val="1">Perempuan</option>
+			</select>
 		</div>
 		<div>
-			<label for="tempatLahir">Agama</label> <input type="text" name="agama" />
+			<label for="agama">Agama</label> <input type="text" name="agama" id="agama" />
 		</div>
 		<div>
-			<label for="tempatLahir">Golongan Darah</label> <input type="text" name="golDarah" />
+			<label for="golDarah">Golongan Darah</label> <input type="text" name="golDarah" id="golDarah" />
 		</div>
 		<div>
-			<label for="tempatLahir">Tahun Masuk</label> <input type="text" name="tahunMasuk" />
+			<label for="tahunMasuk">Tahun Masuk</label> <input type="text" class="yearDatePicker" name="tahunMasuk" id="tahunMasuk" />
 		</div>
 		<div>
-			<label for="tempatLahir">Jalur Masuk</label> <input type="text" name="jalurMasuk" />
+			<label for="jalurMasuk">Jalur Masuk</label> <input type="text" name="jalurMasuk" id="jalurMasuk" />
 		</div>
 		<div>
-			<label for="tempatLahir">Universitas</label> <input type="text" name="idUniv" />
+			<label for="idUniv">Universitas</label> <input type="text" name="idUniv" id="idUniv" />
 		</div>
 		<div>
-			<label for="tempatLahir">Fakultas</label> <input type="text" name="idFakultas" />
+			<label for="idFakultas">Fakultas</label> <input type="text" name="idFakultas" id="idFakultas" />
 		</div>
 		<div>
-			<label for="tempatLahir">Program Studi</label> <input type="text" name="idProdi" />
+			<label for="idProdi">Program Studi</label> <input type="text" name="idProdi" id="idProdi" />
 		</div>
 		<div>
 			<button type="submit" name="action" value="save">Save</button>
