@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MhsModel {
+	private String id;
 	private String npm;
 	private String nama;
 	private String tempatLahir;

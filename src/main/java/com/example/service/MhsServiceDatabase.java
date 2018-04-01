@@ -48,4 +48,22 @@ public class MhsServiceDatabase implements MhsService {
     	log.info("student " + student.getNpm() + " updated");
     	mhsMapper.updateMhs(student);
     }
+    
+    @Override
+    public String selectLatestSeqNPM(String baseNPM) {
+    	log.info("student next sequence NPM");
+    	return mhsMapper.selectNextSeqNPM(baseNPM);
+    }
+    
+    @Override
+    public int selectJmlMhs(String tahunMasuk, String idProdi) {
+    	log.info("get jumlah mahasiswa");
+    	return mhsMapper.selectJmlMhs(tahunMasuk, idProdi);
+    }
+    
+    @Override
+    public int selectJmlMhsLulus(String tahunMasuk, String idProdi) {
+    	log.info("get jumlah mahasiswa lulus");
+    	return mhsMapper.selectJmlMhsLulus(tahunMasuk, idProdi);
+    }
 }

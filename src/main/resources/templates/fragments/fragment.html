@@ -3,15 +3,15 @@
 <head th:fragment="assets">
 	<title th:text="${pageTitle}"></title>
 	<link rel="stylesheet" href="/Bootstrap/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="/Bootstrap/css/bootstrap-datepicker.css" />
-	<link rel="stylesheet" href="/DataTables/datatables.min.css" />
+	<link rel="stylesheet" href="/Bootstrap/css/bootstrap-datepicker.min.css" />
+<!-- 	<link rel="stylesheet" href="/DataTables/datatables.min.css" /> -->
 	<script type="text/javascript" src="/jQuery/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="/Bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="/Bootstrap/js/bootstrap-datepicker.js"></script>
-	<script type="text/javascript" src="/DataTables/datatables.min.js"></script>
+	<script type="text/javascript" src="/Bootstrap/js/bootstrap-datepicker.min.js"></script>
+<!-- 	<script type="text/javascript" src="/DataTables/datatables.min.js"></script> -->
 	<script type="text/javascript">
 	$(document).ready(function() {
-		$('#studentTable').DataTable();
+		
 	});
 	</script>
 </head>
@@ -35,7 +35,7 @@
 						<a class="nav-link" href="/mahasiswa/tambah">Tambah Mahasiswa</a>
 					</li>
 					<li class="nav-item" th:classappend="${title == 'Menambah Mahasiswa' ? 'active':''}">
-						<a class="nav-link" href="/student/add">Kelulusan Mahasiswa</a>
+						<a class="nav-link" href="/mahasiswa/kelulusan">Kelulusan Mahasiswa</a>
 					</li>
 					<li class="nav-item" th:classappend="${title == 'Menambah Mahasiswa' ? 'active':''}">
 						<a class="nav-link" href="/student/add">Cari Mahasiswa</a>

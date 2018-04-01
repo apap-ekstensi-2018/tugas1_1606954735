@@ -46,58 +46,62 @@ $(document).ready(function() {
 
 <body>
 	<div th:replace="fragments/fragment :: header"></div>
-	<h1 class="page-header">Tambah Mahasiswa</h1>
+	<h1 class="page-header">Ubah Mahasiswa</h1>
 
-	<form action="/mahasiswa/tambah" method="post">
+	<form th:action="@{/mahasiswa/ubah/} + ${mhs.npm}" method="post">
 		<div>
-			<label for="nama">Nama Lengkap</label> <input type="text" name="nama" id="nama" />
+			<label for="nama">Nama Lengkap</label>
+			<input type="hidden" name="id" id="id" th:value="${mhs.id}" />
+			<input type="text" name="nama" id="nama" th:value="${mhs.nama}" />
 		</div>
 		<div>
-			<label for="tempatLahir">Tempat Lahir</label> <input type="text" name="tempatLahir" id="tempatLahir" />
+			<label for="tempatLahir">Tempat Lahir</label>
+			<input type="text" name="tempatLahir" id="tempatLahir" th:value="${mhs.tempatLahir}" />
 		</div>
 		<div>
-			<label for="tanggalLahir">Tanggal Lahir</label> <input type="text" class="dateDatePicker" name="tanggalLahir" id="tanggalLahir" />
+			<label for="tanggalLahir">Tanggal Lahir</label>
+			<input type="text" class="dateDatePicker" name="tanggalLahir" id="tanggalLahir" th:value="${mhs.tanggalLahir}" />
 		</div>
 		<div>
 			<label for="jenisKelamin">Jenis Kelamin</label>
 			<select id="jenisKelamin" name="jenisKelamin">
-				<option value="0">--SELECT--</option>
-				<option th:each="jenisKelamin : ${listJenisKelamin}" th:value="${jenisKelamin.value}" th:text="${jenisKelamin.text}"></option>
+				<option value="">--SELECT--</option>
+				<option th:each="jenisKelamin : ${listJenisKelamin}" th:value="${jenisKelamin.value}" th:text="${jenisKelamin.text}" th:selected="${jenisKelamin.value == mhs.jenisKelamin.toString() ? true : false}"></option>
 			</select>
 		</div>
 		<div>
-			<label for="agama">Agama</label> <input type="text" name="agama" id="agama" />
+			<label for="agama">Agama</label> <input type="text" name="agama" id="agama" th:value="${mhs.agama}" />
 		</div>
 		<div>
-			<label for="golDarah">Golongan Darah</label> <input type="text" name="golDarah" id="golDarah" />
+			<label for="golDarah">Golongan Darah</label> <input type="text" name="golDarah" id="golDarah" th:value="${mhs.golDarah}" />
 		</div>
 		<div>
-			<label for="tahunMasuk">Tahun Masuk</label> <input type="text" class="yearDatePicker" name="tahunMasuk" id="tahunMasuk" />
+			<label for="tahunMasuk">Tahun Masuk</label> <input type="text" class="yearDatePicker" name="tahunMasuk" id="tahunMasuk" th:value="${mhs.tahunMasuk}" />
 		</div>
 		<div>
 			<label for="jalurMasuk">Jalur Masuk</label>
 			<select id="jalurMasuk" name="jalurMasuk">
-				<option value="0">--SELECT--</option>
-				<option th:each="jalurMasuk : ${listJalurMasuk}" th:value="${jalurMasuk.value} + ':' + ${jalurMasuk.text}" th:text="${jalurMasuk.text}"></option>
+				<option value="">--SELECT--</option>
+				<option th:each="jalurMasuk : ${listJalurMasuk}" th:value="${jalurMasuk.value} + ':' + ${jalurMasuk.text}" th:text="${jalurMasuk.text}" th:selected="${jalurMasuk.text == mhs.jalurMasuk ? true : false}"></option>
 			</select>
 		</div>
 		<div>
 			<label for="idUniv">Universitas</label>
 			<select id="idUniv" name="idUniv">
-				<option value="0">--SELECT--</option>
-				<option th:each="univ : ${listUniv}" th:value="${univ.id}" th:text="${univ.namaUniv}"></option>
+				<option value="">--SELECT--</option>
+				<option th:each="univ : ${listUniv}" th:value="${univ.id}" th:text="${univ.namaUniv}" th:selected="${univ.id == mhs.idUniv ? true : false}"></option>
 			</select>
 		</div>
 		<div>
 			<label for="idFakultas">Fakultas</label>
 			<select name="idFakultas" id="idFakultas" required="required">
-                <option disabled="disabled" selected="selected" >--PLEASE SELECT UNIVERSITAS--</option>
+                <option th:each="fakultas : ${listFakultas}" th:value="${fakultas.id}" th:text="${fakultas.namaFakultas}" th:selected="${fakultas.id == mhs.idFakultas ? true : false}"></option>
             </select>
 		</div>
 		<div>
 			<label for="idProdi">Program Studi</label>
 			<select name="idProdi" id="idProdi" required="required">
-                <option disabled="disabled" selected="selected" >--PLEASE SELECT FAKULTAS--</option>
+                <option th:each="prodi : ${listProdi}" th:value="${prodi.id}" th:text="${prodi.namaProdi}" th:selected="${prodi.id == mhs.idProdi ? true : false}"></option>
             </select>
 		</div>
 		<div>

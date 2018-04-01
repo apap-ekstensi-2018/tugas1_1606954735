@@ -14,4 +14,10 @@ public interface MhsService {
 	void deleteMhs(MhsModel Mhs);
 	
 	void updateMhs(MhsModel Mhs);
+	
+	String selectLatestSeqNPM(String baseNPM);
+	
+	int selectJmlMhs(String tahunMasuk, String idProdi);
+	
+	int selectJmlMhsLulus(String tahunMasuk, String idProdi);
 }

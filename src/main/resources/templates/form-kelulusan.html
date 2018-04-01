@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+   	<head th:replace="fragments/fragment :: assets" />
+   	<script type="text/javascript">
+	$(document).ready(function() {
+		$('#univ').change(
+	     function() {
+	         $.getJSON("/getFakultasbyUniv", {
+	             idUniv : $(this).val(),
+	             ajax : 'true'
+	         }, function(data) {
+	             var html = '<option value="">--SELECT--</option>';
+	             var len = data.length;
+	             for ( var i = 0; i < len; i++) {
+	                 html += '<option value="' + data[i].id + '">'
+	                         + data[i].namaFakultas + '</option>';
+	             }
+	             html += '</option>';
+	             $('#fakultas').html(html);
+	             $('#prodi').html('<option value="">--SELECT--</option>');
+	         });
+	     });
+		
+		$('#fakultas').change(
+	     function() {
+	         $.getJSON("/getProdibyFakultas", {
+	             idFakultas : $(this).val(),
+	             ajax : 'true'
+	         }, function(data) {
+	             var html = '<option value="">--SELECT--</option>';
+	             var len = data.length;
+	             for ( var i = 0; i < len; i++) {
+	                 html += '<option value="' + data[i].id + '">'
+	                         + data[i].namaProdi + '</option>';
+	             }
+	             html += '</option>';
+	             $('#prodi').html(html);
+	         });
+	     });
+		
+		$('.yearDatePicker').datepicker({ format: "yyyy", viewMode: "years", minViewMode: "years", autoclose: true });
+	});
+	</script>
+    <body>
+    	<div th:replace="fragments/fragment :: header"></div>
+       	<h1 class="page-header">Presentase Kelulusan</h1>
+       	<form action="/mahasiswa/kelulusan" method="get">
+			<div>
+				<label for="thn">Tahun Masuk</label> <input type="text" class="yearDatePicker" name="thn" id="thn" />
+			</div>
+			<div>
+				<label for="univ">Universitas</label>
+				<select id="univ" name="univ">
+					<option value="0">--SELECT--</option>
+					<option th:each="univ : ${listUniv}" th:value="${univ.id}" th:text="${univ.namaUniv}"></option>
+				</select>
+			</div>
+			<div>
+				<label for="fakultas">Fakultas</label>
+				<select name="fakultas" id="fakultas" required="required">
+	                <option disabled="disabled" selected="selected" >--PLEASE SELECT UNIVERSITAS--</option>
+	            </select>
+			</div>
+			<div>
+				<label for="prodi">Program Studi</label>
+				<select name="prodi" id="prodi" required="required">
+	                <option disabled="disabled" selected="selected" >--PLEASE SELECT FAKULTAS--</option>
+	            </select>
+			</div>
+			<div>
+				<button type="submit">Lihat</button>
+			</div>
+		</form>
+       	<div th:replace="fragments/fragment :: footer"></div>	
+    </body>
+</html>
