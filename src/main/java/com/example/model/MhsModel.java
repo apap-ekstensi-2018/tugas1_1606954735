@@ -14,21 +14,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class MhsModel {
 	private String id;
-	@NotNull @NotEmpty
 	private String npm;
-	@NotNull @NotEmpty
 	private String nama;
-	@NotNull @NotEmpty
 	private String tempatLahir;
-	@NotNull
 	private Date tanggalLahir;
-	@NotNull
 	private int jenisKelamin;
-	@NotNull @NotEmpty
 	private String agama;
-	@NotNull @NotEmpty
 	private String golDarah;
-	@NotNull @NotEmpty
 	private String status;
 	@NotNull @NotEmpty
 	private String tahunMasuk;
