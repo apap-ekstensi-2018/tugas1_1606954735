@@ -206,4 +206,49 @@ public class MahasiswaController {
 			return "form-search";
 		}
 	}
+	
+	@RequestMapping(value = "/mahasiswa/cariusia", method = RequestMethod.GET)
+	public String cariMhsbyUsia (Model model,  
+			@RequestParam(value = "thn", required = false) String thn,
+            @RequestParam(value = "univ", required = false) String univ,
+            @RequestParam(value = "fakultas", required = false) String fakultas,
+            @RequestParam(value = "prodi", required = false) String prodi) {
+		model.addAttribute("pageTitle", "Cari Usia Mahasiswa");
+		if(thn != null && univ != null && fakultas != null && prodi != null) {
+			String namaUniv = univDAO.selectNamaUnivbyId(Integer.parseInt(univ));
+			String namaFakultas = fakultasDAO.selectNamaFakultasbyId(Integer.parseInt(fakultas));
+			String namaProdi = prodiDAO.selectNamaProdibyId(Integer.parseInt(prodi));
+			int umurTermuda = mhsDAO.selectUmurTermuda(thn, prodi);
+			int umurTertua = mhsDAO.selectUmurTertua(thn, prodi);
+			
+			model.addAttribute("umurTermuda", umurTermuda);
+			model.addAttribute("umurTertua", umurTertua);
+			model.addAttribute("tahunKelulusan", thn);
+			model.addAttribute("univKelulusan", namaUniv);
+			model.addAttribute("fakultasKelulusan", namaFakultas);
+			model.addAttribute("prodiKelulusan", namaProdi);
+			
+			return "viewbyusia";
+		}
+		else {
+			List<UnivModel> listUniv = univDAO.selectAllUniv();
+			model.addAttribute("listUniv", listUniv);
+			return "form-searchUsia";
+		}
+	}
+	
+	@RequestMapping("/mahasiswa/hapus/{npm}")
+    public String hapusMhs (Model model, @PathVariable(value = "npm") String npm)
+    {
+		MhsModel mhs = mhsDAO.selectMhs(npm);
+    	if (mhs != null) {
+    		model.addAttribute("pageTitle", "Sukses Menghapus Mahasiswa");
+    		mhsDAO.deleteMhs (mhs);
+    		return "delete";
+    	} else {
+    		model.addAttribute("pageTitle", "Gagal Menghapus Mahasiswa");
+    		model.addAttribute ("npm", npm);
+            return "not-found";
+    	}        
+    }
 }

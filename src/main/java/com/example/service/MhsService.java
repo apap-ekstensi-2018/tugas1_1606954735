@@ -21,5 +21,9 @@ public interface MhsService {
 	
 	int selectJmlMhsLulus(String tahunMasuk, String idProdi);
 	
+	int selectUmurTermuda(String tahunMasuk, String idProdi);
+	
+	int selectUmurTertua(String tahunMasuk, String idProdi);
+	
 	List<MhsModel> selectAllMhsbyProdi(String idProdi);
 }

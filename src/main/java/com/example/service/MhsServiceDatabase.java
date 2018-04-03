@@ -73,4 +73,16 @@ public class MhsServiceDatabase implements MhsService {
     	log.info("get jumlah mahasiswa lulus");
     	return mhsMapper.selectJmlMhsLulus(tahunMasuk, idProdi);
     }
+    
+    @Override
+    public int selectUmurTermuda(String tahunMasuk, String idProdi) {
+    	log.info("get umur termuda mahasiswa");
+    	return mhsMapper.selectUmurTermuda(tahunMasuk, idProdi);
+    }
+    
+    @Override
+    public int selectUmurTertua(String tahunMasuk, String idProdi) {
+    	log.info("get umur tertua mahasiswa");
+    	return mhsMapper.selectUmurTertua(tahunMasuk, idProdi);
+    }
 }

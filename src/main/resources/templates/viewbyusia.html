@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+   	<head th:replace="fragments/fragment :: assets" />
+   	<script type="text/javascript">
+	$(document).ready(function() {
+
+	});
+	</script>
+    <body>
+    	<div th:replace="fragments/fragment :: header"></div>
+    	<div class="container">
+	       	<h1 class="page-header">Presentase Kelulusan</h1>
+	       	<div class="row">
+	       		<div class="col-md-6">
+	       			<form>
+		       			<div class="form-group row">
+			       			<span class="col-md-4"><b>Tahun</b></span>
+			       			<span class="col-md-8" th:text="${tahunKelulusan}"></span>
+		       			</div>
+		       			<div class="form-group row">
+		       				<span class="col-md-4"><b>Program Studi</b></span>
+		       				<span class="col-md-8" th:text="${prodiKelulusan}"></span>
+		       			</div>
+		       			<div class="form-group row">
+		       				<span class="col-md-4"><b>Fakultas</b></span>
+		       				<span class="col-md-8" th:text="${fakultasKelulusan}"></span>
+		       			</div>
+		       			<div class="form-group row">
+		       				<span class="col-md-4"><b>Universitas</b></span>
+		       				<span class="col-md-8" th:text="${univKelulusan}"></span>
+		       			</div>
+	       			</form>
+	       		</div>
+	       		<div class="col-md-6">
+	       			<h3>Usia Paling Tua</h3>
+	       			<p class="col-md-6" th:text="${umurTertua}"></p>
+	       			<h3>Usia Paling Muda</h3>
+	       			<p class="col-md-6" th:text="${umurTermuda}"></p>
+	       		</div>
+	       	</div>
+       	</div>
+		<div class="push"></div>
+       	<div th:replace="fragments/fragment :: footer"></div>	
+    </body>
+</html>

@@ -53,7 +53,7 @@ public interface MhsMapper {
     		+ ", #{golDarah}, #{status}, #{tahunMasuk}, #{jalurMasuk}, #{idProdi})")
     void addMhs(MhsModel mhs);
     
-    @Delete("DELETE FROM mahasiswa WHERE npm = #{npm}")
+    @Delete("DELETE FROM mahasiswa WHERE id = #{id} and npm = #{npm}")
     void deleteMhs(MhsModel mhs);
     
     @Update("UPDATE mahasiswa SET npm = #{npm}, nama = #{nama}, tempat_lahir = #{tempatLahir}"
@@ -70,4 +70,10 @@ public interface MhsMapper {
     
     @Select("select count(case when status = 'lulus' then 1 end) as 'jmlMahasiswaLulus' from mahasiswa where tahun_masuk = #{tahunMasuk} AND id_prodi = #{idProdi}")
     int selectJmlMhsLulus(@Param("tahunMasuk") String tahunMasuk, @Param("idProdi") String idProdi);
+    
+    @Select("select coalesce(year(curdate()) - year(max(tanggal_lahir)), 0) as 'umurTermuda' from mahasiswa where tahun_masuk = #{tahunMasuk} AND id_prodi = #{idProdi}")
+    int selectUmurTermuda(@Param("tahunMasuk") String tahunMasuk, @Param("idProdi") String idProdi);
+    
+    @Select("select coalesce(year(curdate()) - year(min(tanggal_lahir)), 0) as 'umurTermuda' from mahasiswa where tahun_masuk = #{tahunMasuk} AND id_prodi = #{idProdi}")
+    int selectUmurTertua(@Param("tahunMasuk") String tahunMasuk, @Param("idProdi") String idProdi);
 }
