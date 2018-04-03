@@ -54,50 +54,50 @@ $(document).ready(function() {
 				<div class="col-md-6 form-group form-row">
 					<label for="nama" class="col-md-4">Nama Lengkap</label>
 					<input type="hidden" name="id" id="id" th:value="${mhs.id}" />
-					<input type="text" name="nama" id="nama" th:value="${mhs.nama}" class="form-control col-md-8" />
+					<input type="text" name="nama" id="nama" th:value="${mhs.nama}" class="form-control col-md-8" required="required" />
 				</div>
 			</div>
 			<div class="form-row">
 				<div class="col-md-6 form-row form-group">
 					<label for="tempatLahir" class="col-md-4">Tempat Lahir</label>
-					<input type="text" name="tempatLahir" id="tempatLahir" th:value="${mhs.tempatLahir}" class="form-control col-md-8" />
+					<input type="text" name="tempatLahir" id="tempatLahir" th:value="${mhs.tempatLahir}" class="form-control col-md-8" required="required" />
 				</div>
 				<div class="col-md-6 form-row form-group">
 					<label for="tanggalLahir" class="col-md-4">Tanggal Lahir</label>
-					<input type="text" class="dateDatePicker form-control col-md-8" name="tanggalLahir" id="tanggalLahir" th:value="${mhs.tanggalLahir}" />
+					<input type="text" class="dateDatePicker form-control col-md-8" name="tanggalLahir" id="tanggalLahir" th:value="${mhs.tanggalLahir}" required="required"/>
 				</div>
 			</div>
 			<div class="form-row">
 				<div class="col-md-6 form-row form-group">
 					<label for="jenisKelamin" class="col-md-4">Jenis Kelamin</label>
-					<select id="jenisKelamin" name="jenisKelamin" class="form-control col-md-8">
+					<select id="jenisKelamin" name="jenisKelamin" class="form-control col-md-8" required="required">
 						<option value="">--SELECT--</option>
 						<option th:each="jenisKelamin : ${listJenisKelamin}" th:value="${jenisKelamin.value}" th:text="${jenisKelamin.text}" th:selected="${jenisKelamin.value == mhs.jenisKelamin.toString() ? true : false}"></option>
 					</select>
 				</div>
 				<div class="col-md-6 form-row form-group">
-					<label for="agama" class="col-md-4">Agama</label> <input type="text" name="agama" id="agama" th:value="${mhs.agama}" class="form-control col-md-8" />
+					<label for="agama" class="col-md-4">Agama</label> <input type="text" name="agama" id="agama" th:value="${mhs.agama}" class="form-control col-md-8" required="required" />
 				</div>
 			</div>
 			<div class="form-row">
 				<div class="col-md-6 form-row form-group">
-					<label for="golDarah" class="col-md-4">Golongan Darah</label> <input type="text" name="golDarah" id="golDarah" th:value="${mhs.golDarah}" class="form-control col-md-8" />
+					<label for="golDarah" class="col-md-4">Golongan Darah</label> <input type="text" name="golDarah" id="golDarah" th:value="${mhs.golDarah}" class="form-control col-md-8" required="required" />
 				</div>
 				<div class="col-md-6 form-row form-group">
-					<label for="tahunMasuk" class="col-md-4">Tahun Masuk</label> <input type="text" class="yearDatePicker form-control col-md-8" name="tahunMasuk" id="tahunMasuk" th:value="${mhs.tahunMasuk}" />
+					<label for="tahunMasuk" class="col-md-4">Tahun Masuk</label> <input type="text" class="yearDatePicker form-control col-md-8" name="tahunMasuk" id="tahunMasuk" th:value="${mhs.tahunMasuk}" required="required" />
 				</div>
 			</div>
 			<div class="form-row">
 				<div class="col-md-6 form-row form-group">
 					<label for="jalurMasuk" class="col-md-4">Jalur Masuk</label>
-					<select id="jalurMasuk" name="jalurMasuk" class="form-control col-md-8">
+					<select id="jalurMasuk" name="jalurMasuk" class="form-control col-md-8" required="required">
 						<option value="">--SELECT--</option>
 						<option th:each="jalurMasuk : ${listJalurMasuk}" th:value="${jalurMasuk.value} + ':' + ${jalurMasuk.text}" th:text="${jalurMasuk.text}" th:selected="${jalurMasuk.text == mhs.jalurMasuk ? true : false}"></option>
 					</select>
 				</div>
 				<div class="col-md-6 form-row form-group">
 					<label for="idUniv" class="col-md-4">Universitas</label>
-					<select id="idUniv" name="idUniv" class="form-control col-md-8">
+					<select id="idUniv" name="idUniv" class="form-control col-md-8" required="required">
 						<option value="">--SELECT--</option>
 						<option th:each="univ : ${listUniv}" th:value="${univ.id}" th:text="${univ.namaUniv}" th:selected="${univ.id == mhs.idUniv ? true : false}"></option>
 					</select>
