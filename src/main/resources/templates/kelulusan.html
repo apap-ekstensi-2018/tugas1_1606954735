@@ -8,23 +8,36 @@
 	</script>
     <body>
     	<div th:replace="fragments/fragment :: header"></div>
-       	<h1 class="page-header">Presentase Kelulusan</h1>
-       	<div class="row">
-       		<div class="col-md-6">
-       			<div class="col-md-6"><b>Tahun</b></div>
-       			<div class="col-md-6" th:text="${tahunKelulusan}"></div>
-       			<div class="col-md-6"><b>Program Studi</b></div>
-       			<div class="col-md-6" th:text="${prodiKelulusan}"></div>
-       			<div class="col-md-6"><b>Fakultas</b></div>
-       			<div class="col-md-6" th:text="${fakultasKelulusan}"></div>
-       			<div class="col-md-6"><b>Universitas</b></div>
-       			<div class="col-md-6" th:text="${univKelulusan}"></div>
-       		</div>
-       		<div class="col-md-6">
-       			<div class="col-md-6" th:text="${presentaseLulus} + '%'"></div>
-       			<div class="col-md-6" th:text="${jmlMhsLulus} + ' dari ' + ${jmlMhs} + ' Mahasiswa Telah Lulus'"></div>
-       		</div>
+    	<div class="container">
+	       	<h1 class="page-header">Presentase Kelulusan</h1>
+	       	<div class="row">
+	       		<div class="col-md-6">
+	       			<form>
+		       			<div class="form-group row">
+			       			<span class="col-md-4"><b>Tahun</b></span>
+			       			<span class="col-md-8" th:text="${tahunKelulusan}"></span>
+		       			</div>
+		       			<div class="form-group row">
+		       				<span class="col-md-4"><b>Program Studi</b></span>
+		       				<span class="col-md-8" th:text="${prodiKelulusan}"></span>
+		       			</div>
+		       			<div class="form-group row">
+		       				<span class="col-md-4"><b>Fakultas</b></span>
+		       				<span class="col-md-8" th:text="${fakultasKelulusan}"></span>
+		       			</div>
+		       			<div class="form-group row">
+		       				<span class="col-md-4"><b>Universitas</b></span>
+		       				<span class="col-md-8" th:text="${univKelulusan}"></span>
+		       			</div>
+	       			</form>
+	       		</div>
+	       		<div class="col-md-6">
+	       			<h2 class="col-md-6" th:text="${presentaseLulus} + '%'"></h2>
+	       			<p class="col-md-6" th:text="${jmlMhsLulus} + ' dari ' + ${jmlMhs} + ' Mahasiswa Telah Lulus'"></p>
+	       		</div>
+	       	</div>
        	</div>
+		<div class="push"></div>
        	<div th:replace="fragments/fragment :: footer"></div>	
     </body>
 </html>

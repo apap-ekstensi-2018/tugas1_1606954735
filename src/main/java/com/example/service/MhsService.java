@@ -20,4 +20,6 @@ public interface MhsService {
 	int selectJmlMhs(String tahunMasuk, String idProdi);
 	
 	int selectJmlMhsLulus(String tahunMasuk, String idProdi);
+	
+	List<MhsModel> selectAllMhsbyProdi(String idProdi);
 }

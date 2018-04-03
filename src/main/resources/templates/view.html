@@ -3,18 +3,21 @@
    	<head th:replace="fragments/fragment :: assets" />
     <body>
     	<div th:replace="fragments/fragment :: header"></div>
-       	<h3 th:text="'NPM = ' + ${mhs.npm}">Student NPM</h3>
-       	<h3 th:text="'Nama = ' + ${mhs.nama}">Student Name</h3>
-       	<h3 th:text="'Tempat/Tanggal Lahir = ' + ${mhs.tempatLahir} + '/' + ${mhs.tanggalLahir}">Student Name</h3>
-       	<h3 th:text="'Program Studi = ' + ${mhs.namaProdi}">Student Name</h3>
-       	<h3 th:text="'Fakultas = ' + ${mhs.namaFakultas}">Student Name</h3>
-       	<h3 th:text="'Universitas = ' + ${mhs.namaUniv}">Student Name</h3>
-       	<h3 th:text="'Jenis Kelamin = ' + ${mhs.jenisKelamin == 1 ? 'Laki-laki' : 'Perempuan'}">Student Name</h3>
-       	<h3 th:text="'Agama = ' + ${mhs.agama}">Student Name</h3>
-       	<h3 th:text="'Golongan Darah = ' + ${mhs.golDarah}">Student Name</h3>
-       	<h3 th:text="'Tahun Masuk = ' + ${mhs.tahunMasuk}">Student Name</h3>
-       	<h3 th:text="'Jalur Masuk = ' + ${mhs.jalurMasuk}">Student Name</h3>
-       	<h3 th:text="'Status = ' + ${mhs.status}">Student Name</h3>
+    	<div class="container">
+	       	<h3 th:text="'NPM = ' + ${mhs.npm}">Student NPM</h3>
+	       	<h3 th:text="'Nama = ' + ${mhs.nama}">Student Name</h3>
+	       	<h3 th:text="'Tempat/Tanggal Lahir = ' + ${mhs.tempatLahir} + '/' + ${mhs.tanggalLahir}">Student Name</h3>
+	       	<h3 th:text="'Program Studi = ' + ${mhs.namaProdi}">Student Name</h3>
+	       	<h3 th:text="'Fakultas = ' + ${mhs.namaFakultas}">Student Name</h3>
+	       	<h3 th:text="'Universitas = ' + ${mhs.namaUniv}">Student Name</h3>
+	       	<h3 th:text="'Jenis Kelamin = ' + ${mhs.jenisKelamin == 1 ? 'Laki-laki' : 'Perempuan'}">Student Name</h3>
+	       	<h3 th:text="'Agama = ' + ${mhs.agama}">Student Name</h3>
+	       	<h3 th:text="'Golongan Darah = ' + ${mhs.golDarah}">Student Name</h3>
+	       	<h3 th:text="'Tahun Masuk = ' + ${mhs.tahunMasuk}">Student Name</h3>
+	       	<h3 th:text="'Jalur Masuk = ' + ${mhs.jalurMasuk}">Student Name</h3>
+	       	<h3 th:text="'Status = ' + ${mhs.status}">Student Name</h3>
+       	</div>
+		<div class="push"></div>
        	<div th:replace="fragments/fragment :: footer"></div>	
     </body>
 </html>

@@ -46,68 +46,71 @@ $(document).ready(function() {
 
 <body>
 	<div th:replace="fragments/fragment :: header"></div>
-	<h1 class="page-header">Ubah Mahasiswa</h1>
-
-	<form th:action="@{/mahasiswa/ubah/} + ${mhs.npm}" method="post">
-		<div>
-			<label for="nama">Nama Lengkap</label>
-			<input type="hidden" name="id" id="id" th:value="${mhs.id}" />
-			<input type="text" name="nama" id="nama" th:value="${mhs.nama}" />
-		</div>
-		<div>
-			<label for="tempatLahir">Tempat Lahir</label>
-			<input type="text" name="tempatLahir" id="tempatLahir" th:value="${mhs.tempatLahir}" />
-		</div>
-		<div>
-			<label for="tanggalLahir">Tanggal Lahir</label>
-			<input type="text" class="dateDatePicker" name="tanggalLahir" id="tanggalLahir" th:value="${mhs.tanggalLahir}" />
-		</div>
-		<div>
-			<label for="jenisKelamin">Jenis Kelamin</label>
-			<select id="jenisKelamin" name="jenisKelamin">
-				<option value="">--SELECT--</option>
-				<option th:each="jenisKelamin : ${listJenisKelamin}" th:value="${jenisKelamin.value}" th:text="${jenisKelamin.text}" th:selected="${jenisKelamin.value == mhs.jenisKelamin.toString() ? true : false}"></option>
-			</select>
-		</div>
-		<div>
-			<label for="agama">Agama</label> <input type="text" name="agama" id="agama" th:value="${mhs.agama}" />
-		</div>
-		<div>
-			<label for="golDarah">Golongan Darah</label> <input type="text" name="golDarah" id="golDarah" th:value="${mhs.golDarah}" />
-		</div>
-		<div>
-			<label for="tahunMasuk">Tahun Masuk</label> <input type="text" class="yearDatePicker" name="tahunMasuk" id="tahunMasuk" th:value="${mhs.tahunMasuk}" />
-		</div>
-		<div>
-			<label for="jalurMasuk">Jalur Masuk</label>
-			<select id="jalurMasuk" name="jalurMasuk">
-				<option value="">--SELECT--</option>
-				<option th:each="jalurMasuk : ${listJalurMasuk}" th:value="${jalurMasuk.value} + ':' + ${jalurMasuk.text}" th:text="${jalurMasuk.text}" th:selected="${jalurMasuk.text == mhs.jalurMasuk ? true : false}"></option>
-			</select>
-		</div>
-		<div>
-			<label for="idUniv">Universitas</label>
-			<select id="idUniv" name="idUniv">
-				<option value="">--SELECT--</option>
-				<option th:each="univ : ${listUniv}" th:value="${univ.id}" th:text="${univ.namaUniv}" th:selected="${univ.id == mhs.idUniv ? true : false}"></option>
-			</select>
-		</div>
-		<div>
-			<label for="idFakultas">Fakultas</label>
-			<select name="idFakultas" id="idFakultas" required="required">
-                <option th:each="fakultas : ${listFakultas}" th:value="${fakultas.id}" th:text="${fakultas.namaFakultas}" th:selected="${fakultas.id == mhs.idFakultas ? true : false}"></option>
-            </select>
-		</div>
-		<div>
-			<label for="idProdi">Program Studi</label>
-			<select name="idProdi" id="idProdi" required="required">
-                <option th:each="prodi : ${listProdi}" th:value="${prodi.id}" th:text="${prodi.namaProdi}" th:selected="${prodi.id == mhs.idProdi ? true : false}"></option>
-            </select>
-		</div>
-		<div>
-			<button type="submit" name="action" value="save">Save</button>
-		</div>
-	</form>
+	<div class="container">
+		<h1 class="page-header">Ubah Mahasiswa</h1>
+	
+		<form th:action="@{/mahasiswa/ubah/} + ${mhs.npm}" method="post">
+			<div>
+				<label for="nama">Nama Lengkap</label>
+				<input type="hidden" name="id" id="id" th:value="${mhs.id}" />
+				<input type="text" name="nama" id="nama" th:value="${mhs.nama}" />
+			</div>
+			<div>
+				<label for="tempatLahir">Tempat Lahir</label>
+				<input type="text" name="tempatLahir" id="tempatLahir" th:value="${mhs.tempatLahir}" />
+			</div>
+			<div>
+				<label for="tanggalLahir">Tanggal Lahir</label>
+				<input type="text" class="dateDatePicker" name="tanggalLahir" id="tanggalLahir" th:value="${mhs.tanggalLahir}" />
+			</div>
+			<div>
+				<label for="jenisKelamin">Jenis Kelamin</label>
+				<select id="jenisKelamin" name="jenisKelamin">
+					<option value="">--SELECT--</option>
+					<option th:each="jenisKelamin : ${listJenisKelamin}" th:value="${jenisKelamin.value}" th:text="${jenisKelamin.text}" th:selected="${jenisKelamin.value == mhs.jenisKelamin.toString() ? true : false}"></option>
+				</select>
+			</div>
+			<div>
+				<label for="agama">Agama</label> <input type="text" name="agama" id="agama" th:value="${mhs.agama}" />
+			</div>
+			<div>
+				<label for="golDarah">Golongan Darah</label> <input type="text" name="golDarah" id="golDarah" th:value="${mhs.golDarah}" />
+			</div>
+			<div>
+				<label for="tahunMasuk">Tahun Masuk</label> <input type="text" class="yearDatePicker" name="tahunMasuk" id="tahunMasuk" th:value="${mhs.tahunMasuk}" />
+			</div>
+			<div>
+				<label for="jalurMasuk">Jalur Masuk</label>
+				<select id="jalurMasuk" name="jalurMasuk">
+					<option value="">--SELECT--</option>
+					<option th:each="jalurMasuk : ${listJalurMasuk}" th:value="${jalurMasuk.value} + ':' + ${jalurMasuk.text}" th:text="${jalurMasuk.text}" th:selected="${jalurMasuk.text == mhs.jalurMasuk ? true : false}"></option>
+				</select>
+			</div>
+			<div>
+				<label for="idUniv">Universitas</label>
+				<select id="idUniv" name="idUniv">
+					<option value="">--SELECT--</option>
+					<option th:each="univ : ${listUniv}" th:value="${univ.id}" th:text="${univ.namaUniv}" th:selected="${univ.id == mhs.idUniv ? true : false}"></option>
+				</select>
+			</div>
+			<div>
+				<label for="idFakultas">Fakultas</label>
+				<select name="idFakultas" id="idFakultas" required="required">
+	                <option th:each="fakultas : ${listFakultas}" th:value="${fakultas.id}" th:text="${fakultas.namaFakultas}" th:selected="${fakultas.id == mhs.idFakultas ? true : false}"></option>
+	            </select>
+			</div>
+			<div>
+				<label for="idProdi">Program Studi</label>
+				<select name="idProdi" id="idProdi" required="required">
+	                <option th:each="prodi : ${listProdi}" th:value="${prodi.id}" th:text="${prodi.namaProdi}" th:selected="${prodi.id == mhs.idProdi ? true : false}"></option>
+	            </select>
+			</div>
+			<div>
+				<button type="submit" name="action" value="save">Save</button>
+			</div>
+		</form>
+	</div>
+	<div class="push"></div>
 	<div th:replace="fragments/fragment :: footer"></div>
 </body>
 

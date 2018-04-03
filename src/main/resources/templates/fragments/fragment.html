@@ -4,11 +4,26 @@
 	<title th:text="${pageTitle}"></title>
 	<link rel="stylesheet" href="/Bootstrap/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="/Bootstrap/css/bootstrap-datepicker.min.css" />
-<!-- 	<link rel="stylesheet" href="/DataTables/datatables.min.css" /> -->
 	<script type="text/javascript" src="/jQuery/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="/Bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/Bootstrap/js/bootstrap-datepicker.min.js"></script>
-<!-- 	<script type="text/javascript" src="/DataTables/datatables.min.js"></script> -->
+	<style>
+		html, body {
+		  height: 100%;
+		  margin: 0;
+		}
+		.wrapper {
+		  min-height: 100%;
+		
+		  /* Equal to height of footer */
+		  /* But also accounting for potential margin-bottom of last child */
+		  margin-bottom: -50px;
+		}
+		.footer,
+		.push {
+		  height: 50px;
+		}
+	</style>
 	<script type="text/javascript">
 	$(document).ready(function() {
 		
@@ -17,46 +32,42 @@
 </head>
 <body>
 	<div th:fragment="header">
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<a class="navbar-brand" href="#">SI Kemahasiswaan</a>
-			<button class="navbar-toggler" type="button" 
-				data-toggle="collapse" data-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-exapanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item" th:classappend="${title == 'Home' ? 'active':''}">
-						<a class="nav-link" href="/">Home</a>
-					</li>
-					<li class="nav-item" th:classappend="${title == 'Daftar Mahasiswa' ? 'active':''}">
-						<a class="nav-link" href="/mahasiswa/tambah">Tambah Mahasiswa</a>
-					</li>
-					<li class="nav-item" th:classappend="${title == 'Menambah Mahasiswa' ? 'active':''}">
-						<a class="nav-link" href="/mahasiswa/kelulusan">Kelulusan Mahasiswa</a>
-					</li>
-					<li class="nav-item" th:classappend="${title == 'Menambah Mahasiswa' ? 'active':''}">
-						<a class="nav-link" href="/student/add">Cari Mahasiswa</a>
-					</li>
-				</ul>
+		<header>
+			<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+				<a class="navbar-brand" href="#">SI Kemahasiswaan</a>
+				<button class="navbar-toggler" type="button" 
+					data-toggle="collapse" data-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-exapanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
 				
-				<form class="form-inline my-2 my-lg-0">
-					<input class="form-control mr-sm-2" 
-						type="text"
-						placeholder="Search"
-						aria-label="Search" />
-					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-						Search
-					</button>
-				</form>
-			</div>
-		</nav>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item" th:classappend="${pageTitle == 'Home' ? 'active':''}">
+							<a class="nav-link" href="/">Home</a>
+						</li>
+						<li class="nav-item" th:classappend="${pageTitle == 'Tambah Mahasiswa' ? 'active':''}">
+							<a class="nav-link" href="/mahasiswa/tambah">Tambah Mahasiswa</a>
+						</li>
+						<li class="nav-item" th:classappend="${pageTitle == 'Kelulusan Mahasiswa' ? 'active':''}">
+							<a class="nav-link" href="/mahasiswa/kelulusan">Kelulusan Mahasiswa</a>
+						</li>
+						<li class="nav-item" th:classappend="${pageTitle == 'Cari Mahasiswa' ? 'active':''}">
+							<a class="nav-link" href="/mahasiswa/cari">Cari Mahasiswa</a>
+						</li>
+					</ul>
+				</div>
+			</nav>
+		</header>
 	</div>
 	<div th:fragment="footer">
-		<hr />
-		<h4>Mata Kuliah APAP</h4>
+		<footer class="footer bd-footer text-muted text-center">
+			<hr />
+	      	<div class="container">
+	        	<p class="text-muted">Copyright &copy; 2018 Tugas 1 APAP by Arri Kurniawan<br/><span class="text-muter">Fakultas Ilmu Komputer Universitas Indonesia</span></p>
+	      	</div>
+	    </footer>
 	</div>
 </body>
 </html>

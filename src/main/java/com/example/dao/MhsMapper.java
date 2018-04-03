@@ -36,8 +36,16 @@ public interface MhsMapper {
 			+ "where mhs.npm = #{npm}")
 	MhsModel selectMhs(@Param("npm") String npm);
 	
-	@Select("select npm, nama from mahasiswa")
+	@Select("select mhs.npm, mhs.nama, mhs.id_prodi as idProdi, prodi.nama_prodi as namaProdi"
+			+ ", mhs.tahun_masuk as tahunMasuk, mhs.jalur_masuk as jalurMasuk"
+			+ " from mahasiswa mhs inner join program_studi prodi on prodi.id = mhs.id_prodi")
     List<MhsModel> selectAllMhs();
+	
+	@Select("select mhs.npm, mhs.nama, mhs.id_prodi as idProdi, prodi.nama_prodi as namaProdi"
+			+ ", mhs.tahun_masuk as tahunMasuk, mhs.jalur_masuk as jalurMasuk"
+			+ " from mahasiswa mhs inner join program_studi prodi on prodi.id = mhs.id_prodi"
+			+ " where mhs.id_prodi = #{idProdi}")
+    List<MhsModel> selectAllMhsbyProdi(@Param("idProdi") String idProdi);
 
     @Insert("INSERT INTO mahasiswa (npm, nama, tempat_lahir, tanggal_lahir, jenis_kelamin"
     		+ ", agama, golongan_darah, status, tahun_masuk, jalur_masuk, id_prodi) "

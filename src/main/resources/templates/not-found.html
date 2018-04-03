@@ -3,8 +3,11 @@
    	<head th:replace="fragments/fragment :: assets" />
     <body>
     	<div th:replace="fragments/fragment :: header"></div>
-    	<h1>Data Mahasiswa tidak ditemukan</h1>
-       	<h3 th:text="'NPM = ' + ${npm}">NPM Mahasiswa</h3>
+    	<div class="container">
+	    	<h1>Data Mahasiswa tidak ditemukan</h1>
+	       	<h3 th:text="'NPM = ' + ${npm}">NPM Mahasiswa</h3>
+       	</div>
+		<div class="push"></div>
        	<div th:replace="fragments/fragment :: footer"></div>
     </body>
 </html>

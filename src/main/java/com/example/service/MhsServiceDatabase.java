@@ -25,8 +25,15 @@ public class MhsServiceDatabase implements MhsService {
 	@Override
     public List<MhsModel> selectAllMhs()
     {
-        log.info ("select all students");
+        log.info ("select all mahasiswa");
         return mhsMapper.selectAllMhs();
+    }
+	
+	@Override
+    public List<MhsModel> selectAllMhsbyProdi(String idProdi)
+    {
+        log.info ("select all mahasiswa by prodi {}", idProdi);
+        return mhsMapper.selectAllMhsbyProdi(idProdi);
     }
 
     @Override

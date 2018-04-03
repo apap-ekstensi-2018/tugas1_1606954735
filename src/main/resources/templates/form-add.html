@@ -43,69 +43,70 @@ $(document).ready(function() {
 	$('.dateDatePicker').datepicker({ format: "yyyy-mm-dd", autoclose: true });
 });
 </script>
-
-<body>
-	<div th:replace="fragments/fragment :: header"></div>
-	<h1 class="page-header">Tambah Mahasiswa</h1>
-
-	<form action="/mahasiswa/tambah" method="post">
-		<div>
-			<label for="nama">Nama Lengkap</label> <input type="text" name="nama" id="nama" />
+	<body>
+		<div th:replace="fragments/fragment :: header"></div>
+		<div class="container">
+			<h1 class="page-header">Tambah Mahasiswa</h1>
+			
+			<form action="/mahasiswa/tambah" method="post">
+				<div>
+					<label for="nama">Nama Lengkap</label> <input type="text" name="nama" id="nama" />
+				</div>
+				<div>
+					<label for="tempatLahir">Tempat Lahir</label> <input type="text" name="tempatLahir" id="tempatLahir" />
+				</div>
+				<div>
+					<label for="tanggalLahir">Tanggal Lahir</label> <input type="text" class="dateDatePicker" name="tanggalLahir" id="tanggalLahir" />
+				</div>
+				<div>
+					<label for="jenisKelamin">Jenis Kelamin</label>
+					<select id="jenisKelamin" name="jenisKelamin">
+						<option value="0">--SELECT--</option>
+						<option th:each="jenisKelamin : ${listJenisKelamin}" th:value="${jenisKelamin.value}" th:text="${jenisKelamin.text}"></option>
+					</select>
+				</div>
+				<div>
+					<label for="agama">Agama</label> <input type="text" name="agama" id="agama" />
+				</div>
+				<div>
+					<label for="golDarah">Golongan Darah</label> <input type="text" name="golDarah" id="golDarah" />
+				</div>
+				<div>
+					<label for="tahunMasuk">Tahun Masuk</label> <input type="text" class="yearDatePicker" name="tahunMasuk" id="tahunMasuk" />
+				</div>
+				<div>
+					<label for="jalurMasuk">Jalur Masuk</label>
+					<select id="jalurMasuk" name="jalurMasuk">
+						<option value="0">--SELECT--</option>
+						<option th:each="jalurMasuk : ${listJalurMasuk}" th:value="${jalurMasuk.value} + ':' + ${jalurMasuk.text}" th:text="${jalurMasuk.text}"></option>
+					</select>
+				</div>
+				<div>
+					<label for="idUniv">Universitas</label>
+					<select id="idUniv" name="idUniv">
+						<option value="0">--SELECT--</option>
+						<option th:each="univ : ${listUniv}" th:value="${univ.id}" th:text="${univ.namaUniv}"></option>
+					</select>
+				</div>
+				<div>
+					<label for="idFakultas">Fakultas</label>
+					<select name="idFakultas" id="idFakultas" required="required">
+		                <option disabled="disabled" selected="selected" >--PLEASE SELECT UNIVERSITAS--</option>
+		            </select>
+				</div>
+				<div>
+					<label for="idProdi">Program Studi</label>
+					<select name="idProdi" id="idProdi" required="required">
+		                <option disabled="disabled" selected="selected" >--PLEASE SELECT FAKULTAS--</option>
+		            </select>
+				</div>
+				<div>
+					<button type="submit" name="action" value="save">Save</button>
+				</div>
+			</form>
+			<div class="push"></div>
 		</div>
-		<div>
-			<label for="tempatLahir">Tempat Lahir</label> <input type="text" name="tempatLahir" id="tempatLahir" />
-		</div>
-		<div>
-			<label for="tanggalLahir">Tanggal Lahir</label> <input type="text" class="dateDatePicker" name="tanggalLahir" id="tanggalLahir" />
-		</div>
-		<div>
-			<label for="jenisKelamin">Jenis Kelamin</label>
-			<select id="jenisKelamin" name="jenisKelamin">
-				<option value="0">--SELECT--</option>
-				<option th:each="jenisKelamin : ${listJenisKelamin}" th:value="${jenisKelamin.value}" th:text="${jenisKelamin.text}"></option>
-			</select>
-		</div>
-		<div>
-			<label for="agama">Agama</label> <input type="text" name="agama" id="agama" />
-		</div>
-		<div>
-			<label for="golDarah">Golongan Darah</label> <input type="text" name="golDarah" id="golDarah" />
-		</div>
-		<div>
-			<label for="tahunMasuk">Tahun Masuk</label> <input type="text" class="yearDatePicker" name="tahunMasuk" id="tahunMasuk" />
-		</div>
-		<div>
-			<label for="jalurMasuk">Jalur Masuk</label>
-			<select id="jalurMasuk" name="jalurMasuk">
-				<option value="0">--SELECT--</option>
-				<option th:each="jalurMasuk : ${listJalurMasuk}" th:value="${jalurMasuk.value} + ':' + ${jalurMasuk.text}" th:text="${jalurMasuk.text}"></option>
-			</select>
-		</div>
-		<div>
-			<label for="idUniv">Universitas</label>
-			<select id="idUniv" name="idUniv">
-				<option value="0">--SELECT--</option>
-				<option th:each="univ : ${listUniv}" th:value="${univ.id}" th:text="${univ.namaUniv}"></option>
-			</select>
-		</div>
-		<div>
-			<label for="idFakultas">Fakultas</label>
-			<select name="idFakultas" id="idFakultas" required="required">
-                <option disabled="disabled" selected="selected" >--PLEASE SELECT UNIVERSITAS--</option>
-            </select>
-		</div>
-		<div>
-			<label for="idProdi">Program Studi</label>
-			<select name="idProdi" id="idProdi" required="required">
-                <option disabled="disabled" selected="selected" >--PLEASE SELECT FAKULTAS--</option>
-            </select>
-		</div>
-		<div>
-			<button type="submit" name="action" value="save">Save</button>
-		</div>
-	</form>
-	<div th:replace="fragments/fragment :: footer"></div>
-</body>
-
+		<div th:replace="fragments/fragment :: footer"></div>
+	</body>
 </html>
 

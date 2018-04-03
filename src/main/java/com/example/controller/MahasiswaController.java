@@ -2,6 +2,8 @@ package com.example.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -47,7 +49,7 @@ public class MahasiswaController {
 	public String view(Model model,
 			@RequestParam(value = "npm", required = false) String npm) {
 		MhsModel mhs = mhsDAO.selectMhs(npm);
-		model.addAttribute("pageTitle", "Lihat Data Mahasiswa");
+		model.addAttribute("pageTitle", "Lihat Mahasiswa");
 		
 		if(mhs != null) {
 			model.addAttribute("mhs", mhs);
@@ -63,7 +65,7 @@ public class MahasiswaController {
 		List<UnivModel> listUniv = univDAO.selectAllUniv();
 		List<ComboBoxModel> listJenisKelamin = ComboBoxModel.getJenisKelamin();
 		List<ComboBoxModel> listJalurMasuk = ComboBoxModel.getJalurMasuk();
-		model.addAttribute("pageTitle", "Menambahkan Data Mahasiswa");
+		model.addAttribute("pageTitle", "Tambah Mahasiswa");
 		model.addAttribute("listUniv", listUniv);
 		model.addAttribute("listJenisKelamin", listJenisKelamin);
 		model.addAttribute("listJalurMasuk", listJalurMasuk);
@@ -71,7 +73,7 @@ public class MahasiswaController {
 	}
 	
 	@RequestMapping(value = "/mahasiswa/tambah", method = RequestMethod.POST)
-	public String addSubmit (Model model, @ModelAttribute MhsModel mhs) {
+	public String addSubmit (Model model, @Valid @ModelAttribute MhsModel mhs) {
 		mhs.setNpm(generateNPM(mhs.getTahunMasuk(), mhs.getIdUniv(), mhs.getIdProdi(), mhs.getJalurMasuk().split(":")[0]));
 		mhs.setJalurMasuk(mhs.getJalurMasuk().split(":")[1]);
 		mhs.setStatus("Aktif");
@@ -115,7 +117,7 @@ public class MahasiswaController {
         if (mhs != null) {
         	List<FakultasModel> listFakultas = fakultasDAO.selectAllFakultasbyUniv(mhs.getIdUniv());
             List<ProdiModel> listProdi = prodiDAO.selectAllProdibyFakultas(mhs.getIdFakultas());
-        	model.addAttribute("title", "Memperbarui Data Mahasiswa");
+        	model.addAttribute("title", "Ubah Mahasiswa");
             model.addAttribute ("mhs", mhs);
             model.addAttribute("listUniv", listUniv);
             model.addAttribute("listProdi", listProdi);
@@ -150,14 +152,17 @@ public class MahasiswaController {
             @RequestParam(value = "fakultas", required = false) String fakultas,
             @RequestParam(value = "prodi", required = false) String prodi)
 	{
-		model.addAttribute("pageTitle", "Melihat Presentase Kelulusan");
+		model.addAttribute("pageTitle", "Kelulusan Mahasiswa");
 		if(thn != null && univ != null && fakultas != null && prodi != null) {
 			String namaUniv = univDAO.selectNamaUnivbyId(Integer.parseInt(univ));
 			String namaFakultas = fakultasDAO.selectNamaFakultasbyId(Integer.parseInt(fakultas));
 			String namaProdi = prodiDAO.selectNamaProdibyId(Integer.parseInt(prodi));
 			int jmlMhs = mhsDAO.selectJmlMhs(thn, prodi);
 			int jmlMhsLulus = mhsDAO.selectJmlMhsLulus(thn, prodi);
-			String presentaseLulus = String.format("%.2f", ((float)jmlMhsLulus/(float)jmlMhs) * 100);
+			String presentaseLulus = "0";
+			if (jmlMhs > 0) {
+				presentaseLulus = String.format("%.2f", ((float)jmlMhsLulus/(float)jmlMhs) * 100);
+			}
 			
 			model.addAttribute("jmlMhs", jmlMhs);
 			model.addAttribute("jmlMhsLulus", jmlMhsLulus);
@@ -173,6 +178,32 @@ public class MahasiswaController {
 			List<UnivModel> listUniv = univDAO.selectAllUniv();
 			model.addAttribute("listUniv", listUniv);
 			return "form-kelulusan";
+		}
+	}
+	
+	@RequestMapping(value = "/mahasiswa/cari", method = RequestMethod.GET)
+	public String cariMhs (Model model,
+            @RequestParam(value = "univ", required = false) String univ,
+            @RequestParam(value = "fakultas", required = false) String fakultas,
+            @RequestParam(value = "prodi", required = false) String prodi) {
+		model.addAttribute("pageTitle", "Cari Mahasiswa");
+		if(univ != null && fakultas != null && prodi != null) {
+			String namaUniv = univDAO.selectNamaUnivbyId(Integer.parseInt(univ));
+			String namaFakultas = fakultasDAO.selectNamaFakultasbyId(Integer.parseInt(fakultas));
+			String namaProdi = prodiDAO.selectNamaProdibyId(Integer.parseInt(prodi));
+			List<MhsModel> listMhs = mhsDAO.selectAllMhsbyProdi(prodi);
+			
+			model.addAttribute("namaUniv", namaUniv);
+			model.addAttribute("namaFakultas", namaFakultas);
+			model.addAttribute("namaProdi", namaProdi);
+			model.addAttribute("listMhs", listMhs);
+			
+			return "viewbyprodi";
+		}
+		else {
+			List<UnivModel> listUniv = univDAO.selectAllUniv();
+			model.addAttribute("listUniv", listUniv);
+			return "form-search";
 		}
 	}
 }

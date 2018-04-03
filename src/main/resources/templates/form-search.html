@@ -37,22 +37,14 @@
 	             $('#prodi').html(html);
 	         });
 	     });
-		
-		$('.yearDatePicker').datepicker({ format: "yyyy", viewMode: "years", minViewMode: "years", autoclose: true });
 	});
 	</script>
     <body>
     	<div th:replace="fragments/fragment :: header"></div>
-    	<div class="container">
-	       	<h1 class="page-header">Presentase Kelulusan</h1>
-	       	<form action="/mahasiswa/kelulusan" method="get">
+    	<div class="container">    		
+     		<h1 class="page-header">Cari Mahasiswa</h1>
+	       	<form action="/mahasiswa/cari" method="get">
 		       	<div class="form-row">
-					<div class="form-group col-md-4">
-						<label for="thn">Tahun Masuk</label>
-						<input type="text" class="form-control yearDatePicker" name="thn" id="thn" required="required" />
-					</div>
-				</div>
-				<div class="form-row">
 					<div class="form-group col-md-4">
 						<label for="univ">Universitas</label>
 						<select class="form-control" id="univ" name="univ" required="required">
@@ -74,9 +66,9 @@
 					</div>
 				</div>
 				<div class="text-right">
-					<button type="submit" class="btn btn-primary">Lihat</button>
+					<button type="submit" class="btn btn-primary">Cari</button>
 				</div>
-			</form>
+			</form>			  
 		</div>
 		<div class="push"></div>
        	<div th:replace="fragments/fragment :: footer"></div>	
