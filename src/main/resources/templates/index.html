@@ -9,14 +9,16 @@
 			<hr />
 			<form action="/mahasiswa" method="get">
 				<h3>Lihat Data Mahasiswa Berdasarkan NPM</h3>
-				<div>
-					<label for="npm">Masukkan Nomor Pokok Mahasiswa</label>
-				</div>
-				<div>
-					<input type="text" name="npm" />
-				</div>
-				<div>
-					<button type="submit">Lihat</button>
+				<div class="form-row">
+					<div class="form-group col-md-4">
+						<label for="npm">Masukkan Nomor Pokok Mahasiswa</label>
+					</div>
+					<div class="form-group col-md-4">
+						<input type="text" name="npm" class="form-control" />
+					</div>
+					<div class="col-md-4">
+						<button type="submit" class="btn btn-primary">Lihat</button>
+					</div>
 				</div>
 			</form>
 		</div>

@@ -6,6 +6,7 @@
 		<div class="container">
 			<h2>Sukses!</h2>
 			<p th:text="'Mahasiswa dengan NPM ' + ${npm} + ' berhasil ditambahkan'"></p>
+			<p><a th:href="'/mahasiswa?npm=' + ${npm}"><input type="button" class="btn btn-primary" value="Lihat Data"></a></p>
 		</div>
 		<div class="push"></div>
 		<div th:replace="fragments/fragment :: footer"></div>
